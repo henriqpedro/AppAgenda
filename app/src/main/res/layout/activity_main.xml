@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo Compromisso"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edtData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTitulo"
+        android:layout_marginTop="16dp"
+        android:hint="Data (dd/MM/yyyy)"/>
+
+    <EditText
+        android:id="@+id/edtHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtData"
+        android:layout_marginTop="8dp"
+        android:hint="Hora (HH:mm)"/>
+
+    <EditText
+        android:id="@+id/edtDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtHora"
+        android:layout_marginTop="8dp"
+        android:hint="Descrição"/>
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtDescricao"
+        android:layout_marginTop="16dp"
+        android:text="OK"/>
+
+    <Button
+        android:id="@+id/btnCompromissosHoje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnOK"
+        android:layout_marginTop="16dp"
+        android:text="Compromissos de Hoje"/>
+
+    <Button
+        android:id="@+id/btnCompromissosOutroDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCompromissosHoje"
+        android:layout_marginTop="16dp"
+        android:text="Compromissos de Outro Dia"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCompromissosOutroDia"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/txtCompromissos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
+</RelativeLayout>
