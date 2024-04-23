@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppDatabase db;
+    public static AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,5 @@ public class MainActivity extends AppCompatActivity {
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "database-name").allowMainThreadQueries().build();
-
-        FragmentoCompromissoListagem.setDbButtonsBehavior(db);
-        FragmentoCompromissoCadastro.setDbButtonsBehavior(db);
     }
 }

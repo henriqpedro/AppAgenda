@@ -15,13 +15,13 @@ public class FragmentoCompromissoCadastro extends Fragment {
     private static EditText edtData, edtHora, edtDescricao;
     private static Button btnData, btnHora, btnOK;
 
-    private static void showToast(String text) {
+    private void showToast(String text) {
         Toast toast = new Toast(edtData.getContext());
         toast.setText(text);
         toast.show();
     }
 
-    private static boolean isValid() {
+    private boolean isValid() {
         if (edtData.getText().toString().trim().isEmpty()) {
             showToast("Data não informada!");
             return false;
@@ -35,23 +35,6 @@ public class FragmentoCompromissoCadastro extends Fragment {
             return false;
         }
         return true;
-    }
-
-    public static void setDbButtonsBehavior(AppDatabase db) {
-        btnOK.setOnClickListener(v -> {
-            String data = edtData.getText().toString();
-            String hora = edtHora.getText().toString();
-            String descricao = edtDescricao.getText().toString();
-
-            if (!isValid())
-                return;
-
-            CompromissoEntity compromisso = new CompromissoEntity(data, hora, descricao);
-            db.compromissoDao().insertCompromisso(compromisso);
-            edtData.setText("");
-            edtHora.setText("");
-            edtDescricao.setText("");
-        });
     }
 
     @Override
@@ -79,6 +62,24 @@ public class FragmentoCompromissoCadastro extends Fragment {
         btnHora.setOnClickListener(v -> {
             FragmentoTimePicker timePicker = new FragmentoTimePicker();
             timePicker.show(getParentFragmentManager(), "timePicker");
+        });
+
+        btnOK.setOnClickListener(v -> {
+            String data = edtData.getText().toString();
+            String hora = edtHora.getText().toString();
+            String descricao = edtDescricao.getText().toString();
+
+            if (!isValid())
+                return;
+
+            AppDatabase db = MainActivity.db;
+            if (db != null) {
+                CompromissoEntity compromisso = new CompromissoEntity(data, hora, descricao);
+                db.compromissoDao().insertCompromisso(compromisso);
+            }
+            edtData.setText("");
+            edtHora.setText("");
+            edtDescricao.setText("");
         });
 
         return view;

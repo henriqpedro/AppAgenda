@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -17,19 +18,22 @@ public class FragmentoCompromissoListagem extends Fragment {
     public static Button btnCompromissosHoje, btnCompromissosOutroDia;
     public static TextView txtCompromissos;
 
-    private static void exibirCompromissos(AppDatabase db, boolean dataDeHoje) {
+    public static void exibirCompromissos(String date) {
 
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH) + 1;
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        String dataAtual = day + "/" + month + "/" + year;
-        List<CompromissoEntity> compromissos;
-        if (dataDeHoje)
-            compromissos = db.compromissoDao().getCompromissosByDate(dataAtual);
-        else
-            compromissos = db.compromissoDao().getCompromissosOutroDia(dataAtual);
+        List<CompromissoEntity> compromissos = new ArrayList<>();
+        AppDatabase db = MainActivity.db;
+        if (db != null) {
+            if (date == null) {
+                String dataAtual = day + "/" + month + "/" + year;
+                compromissos = db.compromissoDao().getCompromissosByDate(dataAtual);
+            } else
+                compromissos = db.compromissoDao().getCompromissosByDate(date);
+        }
 
         StringBuilder sb = new StringBuilder();
         for (CompromissoEntity compromisso : compromissos) {
@@ -39,15 +43,6 @@ public class FragmentoCompromissoListagem extends Fragment {
         }
 
         txtCompromissos.setText(sb.toString());
-    }
-
-    public static void setDbButtonsBehavior(AppDatabase db) {
-        btnCompromissosHoje.setOnClickListener(v ->
-                exibirCompromissos(db, true)
-        );
-        btnCompromissosOutroDia.setOnClickListener(v ->
-                exibirCompromissos(db, false)
-        );
     }
 
     @Override
@@ -62,6 +57,15 @@ public class FragmentoCompromissoListagem extends Fragment {
         btnCompromissosHoje = view.findViewById(R.id.btnCompromissosHoje);
         btnCompromissosOutroDia = view.findViewById(R.id.btnCompromissosOutroDia);
         txtCompromissos = view.findViewById(R.id.txtCompromissos);
+
+        btnCompromissosOutroDia.setOnClickListener(v -> {
+            FragmentoAnotherDatePicker datePicker = new FragmentoAnotherDatePicker();
+            datePicker.show(getParentFragmentManager(), "anotherDatePicker");
+        });
+
+        btnCompromissosHoje.setOnClickListener(v ->
+                exibirCompromissos(null)
+        );
 
         return view;
     }
