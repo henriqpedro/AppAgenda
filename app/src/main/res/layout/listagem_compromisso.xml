@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.example.etapa1.FragmentoCompromissoListagem">
+
+    <TextView
+        android:id="@+id/txtMostrarCompromissos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:text="Listar compromissos"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCompromissosHoje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMostrarCompromissos"
+        android:text="Para hoje" />
+
+    <Button
+        android:id="@+id/btnCompromissosOutroDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMostrarCompromissos"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/btnCompromissosHoje"
+        android:text="Para outro dia" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCompromissosOutroDia"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/txtCompromissos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.example.etapa1.FragmentoCompromissoCadastro">
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo Compromisso"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtData"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTitulo"
+        android:layout_marginTop="16dp"
+        android:clickable="false"
+        android:enabled="false"
+        android:hint="Data" />
+
+    <Button
+        android:id="@+id/btnData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/edtData"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/edtData"
+        android:hint="Selecionar data"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/edtHora"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtData"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:hint="Hora" />
+
+    <Button
+        android:id="@+id/btnHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/edtHora"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/edtHora"
+        android:hint="Selecionar hora"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/edtDescricao"
+        android:layout_width="383dp"
+        android:layout_height="93dp"
+        android:layout_below="@id/edtHora"
+        android:layout_marginTop="8dp"
+        android:hint="Descrição" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtDescricao"
+        android:layout_marginTop="16dp"
+        android:text="OK" />
+
+</RelativeLayout>
