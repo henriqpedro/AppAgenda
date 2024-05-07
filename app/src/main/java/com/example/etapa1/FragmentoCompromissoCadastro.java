@@ -1,6 +1,7 @@
 package com.example.etapa1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,7 @@ public class FragmentoCompromissoCadastro extends Fragment {
             if (db != null) {
                 CompromissoEntity compromisso = new CompromissoEntity(data, hora, descricao);
                 db.compromissoDao().insertCompromisso(compromisso);
+                Log.i("Cadastro de compromisso efetivado", compromisso.toString());
             }
             edtData.setText("");
             edtHora.setText("");

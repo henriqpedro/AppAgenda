@@ -36,12 +36,8 @@ public class FragmentoCompromissoListagem extends Fragment {
         }
 
         StringBuilder sb = new StringBuilder();
-        for (CompromissoEntity compromisso : compromissos) {
-            sb.append("Data: ").append(compromisso.getData()).append("\n");
-            sb.append("Hora: ").append(compromisso.getHora()).append("\n");
-            sb.append("Descrição: ").append(compromisso.getDescricao()).append("\n\n");
-        }
-
+        for (CompromissoEntity compromisso : compromissos)
+            sb.append(compromisso.toString());
         txtCompromissos.setText(sb.toString());
     }
 

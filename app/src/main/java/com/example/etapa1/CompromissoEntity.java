@@ -17,6 +17,13 @@ public class CompromissoEntity {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return "Data: " + data + '\n' +
+                "Hora: " + hora + '\n' +
+                "Descricao: " + descricao + "\n\n";
+    }
+
     public int getId() {
         return id;
     }
