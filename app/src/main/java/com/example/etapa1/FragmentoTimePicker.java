@@ -16,6 +16,12 @@ public class FragmentoTimePicker extends DialogFragment implements TimePickerDia
     private int hora;
     private int minutos;
 
+    public String getFormattedTime() {
+        String hour = String.format("%02d", hora);
+        String minute = String.format("%02d", minutos);
+        return hour + ':' + minute;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
@@ -30,8 +36,8 @@ public class FragmentoTimePicker extends DialogFragment implements TimePickerDia
         hora = hourOfDay;
         minutos = minute;
 
-        EditText txt = (EditText) getActivity().findViewById(R.id.edtHora);
+        EditText txt = getActivity().findViewById(R.id.edtHora);
         if (txt != null)
-            txt.setText(hora + ":" + minutos);
+            txt.setText(getFormattedTime());
     }
 }

@@ -16,6 +16,13 @@ public class FragmentoDatePicker extends DialogFragment implements DatePickerDia
     private int mes;
     private  int ano;
 
+    public String getFormattedDate() {
+        String day = String.format("%02d", dia);
+        String month = String.format("%02d", mes);
+        String year = String.format("%04d", ano);
+        return day + '/' + month + '/' + year;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
@@ -32,8 +39,8 @@ public class FragmentoDatePicker extends DialogFragment implements DatePickerDia
         mes = month + 1;
         ano = year;
 
-        EditText txt = (EditText) getActivity().findViewById(R.id.edtData);
+        EditText txt = getActivity().findViewById(R.id.edtData);
         if (txt != null)
-            txt.setText(dia + "/" + mes + "/" + ano);
+            txt.setText(getFormattedDate());
     }
 }

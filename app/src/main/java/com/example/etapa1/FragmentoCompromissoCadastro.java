@@ -77,7 +77,7 @@ public class FragmentoCompromissoCadastro extends Fragment {
             if (db != null) {
                 CompromissoEntity compromisso = new CompromissoEntity(data, hora, descricao);
                 db.compromissoDao().insertCompromisso(compromisso);
-                Log.i("Cadastro de compromisso efetivado", compromisso.toString());
+                Log.i("Cadastro", compromisso.toString());
             }
             edtData.setText("");
             edtHora.setText("");
