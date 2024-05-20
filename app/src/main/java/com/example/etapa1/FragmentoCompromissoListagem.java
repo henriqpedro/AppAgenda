@@ -1,5 +1,7 @@
 package com.example.etapa1;
 
+import static com.example.etapa1.Helpers.StringFormatter.getFormattedDate;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +31,7 @@ public class FragmentoCompromissoListagem extends Fragment {
         AppDatabase db = MainActivity.db;
         if (db != null) {
             if (date == null) {
-                String dataAtual = day + "/" + month + "/" + year;
+                String dataAtual = getFormattedDate(day, month, year);
                 compromissos = db.compromissoDao().getCompromissosByDate(dataAtual);
             } else
                 compromissos = db.compromissoDao().getCompromissosByDate(date);

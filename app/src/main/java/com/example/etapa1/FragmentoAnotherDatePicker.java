@@ -1,5 +1,7 @@
 package com.example.etapa1;
 
+import static com.example.etapa1.Helpers.StringFormatter.getFormattedDate;
+
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -30,6 +32,6 @@ public class FragmentoAnotherDatePicker extends DialogFragment implements DatePi
         dia = day;
         mes = month + 1;
         ano = year;
-        FragmentoCompromissoListagem.exibirCompromissos(dia + "/" + mes + "/" + ano);
+        FragmentoCompromissoListagem.exibirCompromissos(getFormattedDate(dia, mes, ano));
     }
 }

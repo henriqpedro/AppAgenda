@@ -1,6 +1,7 @@
 package com.example.etapa1;
 
-import android.app.DatePickerDialog;
+import static com.example.etapa1.Helpers.StringFormatter.getFormattedTime;
+
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -15,12 +16,6 @@ public class FragmentoTimePicker extends DialogFragment implements TimePickerDia
 
     private int hora;
     private int minutos;
-
-    public String getFormattedTime() {
-        String hour = String.format("%02d", hora);
-        String minute = String.format("%02d", minutos);
-        return hour + ':' + minute;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -38,6 +33,6 @@ public class FragmentoTimePicker extends DialogFragment implements TimePickerDia
 
         EditText txt = getActivity().findViewById(R.id.edtHora);
         if (txt != null)
-            txt.setText(getFormattedTime());
+            txt.setText(getFormattedTime(hora, minutos));
     }
 }
